@@ -24,7 +24,7 @@ A simple yet powerful Opensource web app that helps gaming communities organize 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/poll-master.git
+   git clone https://github.com/Opedepodepes-Olugbemi/poll_master
    cd poll-master
    ```  
 2. Install dependencies
@@ -63,4 +63,4 @@ The bot includes comprehensive error handling for:
 ## Support 💬
 
 For support, please:
-1. Check the [Issues](https://github.com/yourusername/discord-game-poll-bot/
+1. Check the [Issues](https://github.com/Opedepodepes-Olugbemi/poll_master/
