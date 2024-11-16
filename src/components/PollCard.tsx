@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Poll } from '../types/poll';
 import PollOption from './PollOption';
 import ShareButtons from './ShareButtons';

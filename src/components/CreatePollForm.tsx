@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Plus, Minus, Send, Image, X } from 'lucide-react';
 import { createPoll } from '../services/api';
 import toast from 'react-hot-toast';
-import { CreatePollData } from '../types/poll';
 import ImageSearch from './ImageSearch';
 
 interface CreatePollFormProps {

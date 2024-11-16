@@ -1,4 +1,3 @@
-import React from 'react';
 import { PollOption as PollOptionType } from '../types/poll';
 
 interface PollOptionProps {
