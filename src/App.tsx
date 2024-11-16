@@ -22,6 +22,7 @@ import { ThemeProvider } from './components/ThemeProvider';
 import UsernameSetting from './components/UsernameSetting';
 import { Routes, Route } from 'react-router-dom';
 import SharedPollView from './components/SharedPollView';
+import { testAppwriteIntegration } from './services/test';
 
 // Register ChartJS components properly
 ChartJS.register(
@@ -46,17 +47,11 @@ export default function App() {
     try {
       setLoading(true);
       setError(null);
-      const data = await getPolls();
-      if (data && Array.isArray(data.polls)) {
-        setPolls(data.polls);
-      } else {
-        setPolls([]);
-        setError('Invalid data format received from server');
-      }
+      const { polls: fetchedPolls } = await getPolls();
+      setPolls(fetchedPolls);
     } catch (error) {
       console.error('Failed to fetch polls:', error);
       setError('Failed to load polls. Please try again later.');
-      setPolls([]);
     } finally {
       setLoading(false);
     }

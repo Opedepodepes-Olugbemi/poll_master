@@ -57,9 +57,15 @@ export default function PollCard({ poll, onVote, onDelete }: PollCardProps) {
     }
   };
 
+  const getBaseUrl = () => {
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    return isLocalhost 
+      ? `${window.location.protocol}//${window.location.host}`
+      : 'https://opedepodepes-olugbemi.github.io/poll_master';
+  };
+
   const handleShare = () => {
-    const baseUrl = 'https://opedepodepes-olugbemi.github.io/poll_master';
-    const shareUrl = `${baseUrl}/#/poll/${poll.id}`;
+    const shareUrl = `${getBaseUrl()}/#/poll/${poll.id}`;
     navigator.clipboard.writeText(shareUrl);
     toast.success('Share link copied to clipboard!');
   };

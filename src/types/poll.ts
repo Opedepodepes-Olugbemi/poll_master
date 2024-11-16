@@ -22,11 +22,6 @@ export interface CreatePollData {
   }[];
 }
 
-export interface DbPoll {
-  id: string;
-  question: string;
-  created_at: string;
-  votes_count: number;
-  options: string;
-  hasVoted?: number;
+export interface DBPoll extends Omit<Poll, 'options'> {
+  options: string; // JSON string in DB
 }

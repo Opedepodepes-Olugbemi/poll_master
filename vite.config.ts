@@ -10,26 +10,14 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    exclude: ['better-sqlite3'],
-    include: ['react', 'react-dom']
-  },
-  server: {
-    port: 5173,
-    host: true
+    exclude: ['sql.js']
   },
   build: {
     commonjsOptions: {
       include: [/node_modules/],
       transformMixedEsModules: true
-    },
-    rollupOptions: {
-      external: ['better-sqlite3'],
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-        },
-      },
     }
   },
   base: '/poll_master/',
+  assetsInclude: ['**/*.wasm'],
 });

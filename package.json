@@ -6,15 +6,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "better-sqlite3": "^8.0.0",
+    "appwrite": "^13.0.2",
     "chart.js": "^4.4.1",
-    "drizzle-orm": "^0.29.0",
     "lucide-react": "^0.294.0",
     "poll-app": "file:",
     "react": "^18.2.0",
@@ -25,7 +24,6 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.8",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
