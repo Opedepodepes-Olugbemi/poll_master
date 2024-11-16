@@ -3,7 +3,7 @@ import { Poll } from '../types/poll';
 import PollOption from './PollOption';
 import ShareButtons from './ShareButtons';
 import { votePoll, deletePoll } from '../services/api';
-import { Calendar, Trash2, AlertCircle, Share2 } from 'lucide-react';
+import { Calendar, Trash2, AlertCircle, Link } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface PollCardProps {
@@ -58,7 +58,8 @@ export default function PollCard({ poll, onVote, onDelete }: PollCardProps) {
   };
 
   const handleShare = () => {
-    const shareUrl = `${window.location.origin}/poll/${poll.id}`;
+    const baseUrl = 'https://opedepodepes-olugbemi.github.io/poll_master';
+    const shareUrl = `${baseUrl}/#/poll/${poll.id}`;
     navigator.clipboard.writeText(shareUrl);
     toast.success('Share link copied to clipboard!');
   };
@@ -79,9 +80,9 @@ export default function PollCard({ poll, onVote, onDelete }: PollCardProps) {
               <button
                 onClick={handleShare}
                 className="p-1 hover:bg-gray-100 dark:hover:bg-reddit-dark rounded-full transition-colors"
-                title="Share poll"
+                title="Copy link"
               >
-                <Share2 className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                <Link className="h-5 w-5 text-gray-500 dark:text-gray-400" />
               </button>
               <button
                 onClick={() => setShowDeleteConfirm(true)}
@@ -141,11 +142,7 @@ export default function PollCard({ poll, onVote, onDelete }: PollCardProps) {
             <div className="text-xs text-gray-500 dark:text-gray-400">
               {totalVotes} {totalVotes === 1 ? 'vote' : 'votes'}
             </div>
-            <ShareButtons 
-              pollId={poll.id} 
-              pollQuestion={poll.question}
-              sessionId={poll.sessionId}
-            />
+            <ShareButtons poll={poll} />
           </div>
         </div>
       </div>

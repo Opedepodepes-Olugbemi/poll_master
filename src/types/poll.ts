@@ -12,7 +12,6 @@ export interface Poll {
   created_at: string;
   votes_count: number;
   hasVoted?: boolean;
-  sessionId?: string;
 }
 
 export interface CreatePollData {
@@ -21,4 +20,13 @@ export interface CreatePollData {
     text: string;
     imageUrl?: string;
   }[];
+}
+
+export interface DbPoll {
+  id: string;
+  question: string;
+  created_at: string;
+  votes_count: number;
+  options: string;
+  hasVoted?: number;
 }

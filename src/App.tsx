@@ -283,7 +283,6 @@ export default function App() {
         />
         
         <Routes>
-          <Route path="/poll/:pollId" element={<SharedPollView />} />
           <Route path="/" element={
             <>
               <header className="bg-white dark:bg-reddit-card-dark shadow-reddit dark:shadow-reddit-dark sticky top-0 z-50">
@@ -403,6 +402,7 @@ export default function App() {
               </main>
             </>
           } />
+          <Route path="/poll/:pollId" element={<SharedPollView />} />
         </Routes>
         
         <UsernameSetting />
