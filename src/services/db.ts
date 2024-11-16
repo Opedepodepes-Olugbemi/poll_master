@@ -1,5 +1,10 @@
 import { Poll, DbPoll, PollOption } from '../types/poll';
 
+interface UserInfo {
+  id: string;
+  username: string;
+}
+
 // Create a wrapper for IndexedDB
 class IndexedDB {
   private db: IDBDatabase | null = null;
@@ -179,6 +184,45 @@ class IndexedDB {
       } catch (error) {
         reject(error);
       }
+    });
+  }
+
+  async getUserInfo(userId: string): Promise<UserInfo> {
+    if (!this.db) await this.init();
+    return new Promise((resolve) => {
+      const transaction = this.db!.transaction(['users'], 'readonly');
+      const store = transaction.objectStore('users');
+      const request = store.get(userId);
+
+      request.onsuccess = () => {
+        if (request.result) {
+          resolve(request.result);
+        } else {
+          resolve({
+            id: userId,
+            username: `Anonymous_${userId.slice(0, 4)}`
+          });
+        }
+      };
+
+      request.onerror = () => {
+        resolve({
+          id: userId,
+          username: `Anonymous_${userId.slice(0, 4)}`
+        });
+      };
+    });
+  }
+
+  async updateUsername(userId: string, username: string): Promise<{ success: boolean }> {
+    if (!this.db) await this.init();
+    return new Promise((resolve, reject) => {
+      const transaction = this.db!.transaction(['users'], 'readwrite');
+      const store = transaction.objectStore('users');
+      const request = store.put({ id: userId, username });
+
+      request.onsuccess = () => resolve({ success: true });
+      request.onerror = () => reject(request.error);
     });
   }
 }
