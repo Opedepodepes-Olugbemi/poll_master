@@ -24,5 +24,6 @@ export default defineConfig({
   define: {
     'process.env': {},
     'process.versions': {}
-  }
+  },
+  base: '/poll_master/',
 });
